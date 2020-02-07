@@ -12,3 +12,5 @@
 */
 
 Route::get('/','home\homeController@index');
+Route::post('/login','home\homeController@login');
+Route::get('/dashboard','home\homeController@dashboard');

@@ -16,16 +16,24 @@
         <div class="card-header mx-auto bg-dark">
             <span> <img src="https://amar.vote/assets/img/amarVotebd.png" class="w-75" alt="Logo"> </span><br/>
             <span class="logo_title mt-5"> Login Dashboard </span>
-<!--            <h1>--><?php //echo $message?><!--</h1>-->
+			@if ($errors->any())
+			    <div class="alert alert-danger">
+			        <ul>
+			            @foreach ($errors->all() as $error)
+			                <li>{{ $error }}</li>
+			            @endforeach
+			        </ul>
+			    </div>
+			@endif
 
         </div>
         <div class="card-body">
-            <form action="" method="post">
+            <form id="login_form" method="post" action="javascript:void(0)">
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                     </div>
-                    <input type="text" name="userid" id="uerid" class="form-control" placeholder="Username">
+                    <input type="text" name="userid" id="userid" class="form-control" placeholder="User ID">
                 </div>
 
                 <div class="input-group form-group">
@@ -47,6 +55,19 @@
 </div>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$("#actionBtn").on("click", function(){
+			var userId = $("#userid").val();
+			var password = $("#password").val();
+			$.ajax({
+				url:"/login",
+				method:"POST",
+				data: {"_token": "{{ csrf_token() }}", "userId": userId, "password":password},
+				dataType: "JSON",
+				success:function(data){
+					
+				}
+			});
+		});
 
 	});
 </script>
