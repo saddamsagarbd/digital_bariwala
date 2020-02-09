@@ -1,75 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<title>Login - Digital Bariwala</title>
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
+    <title>Login- Digital Bariwala</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{{asset('assets/css/lib/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{asset('assets/css/helper.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
+    <!--[if lt IE 9]>
+    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
-<body>
-<div class="container">
-    <div class="card card-login mx-auto text-center bg-dark">
-        <div class="card-header mx-auto bg-dark">
-            <span> <img src="https://amar.vote/assets/img/amarVotebd.png" class="w-75" alt="Logo"> </span><br/>
-            <span class="logo_title mt-5"> Login Dashboard </span>
-			@if ($errors->any())
-			    <div class="alert alert-danger">
-			        <ul>
-			            @foreach ($errors->all() as $error)
-			                <li>{{ $error }}</li>
-			            @endforeach
-			        </ul>
-			    </div>
-			@endif
 
-        </div>
-        <div class="card-body">
-            <form id="login_form" method="post" action="javascript:void(0)">
-                <div class="input-group form-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-user"></i></span>
-                    </div>
-                    <input type="text" name="userid" id="userid" class="form-control" placeholder="User ID">
-                </div>
-
-                <div class="input-group form-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-key"></i></span>
-                    </div>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-                </div>
-                <div class="form-group float-left">
-                	<a href="#">Forget Password?</a>
-                </div>
-                <div class="form-group">
-                	<button type="button" id="actionBtn" class="btn btn-outline-danger float-right login_btn">Login</button>
-                    <!-- <input type="submit" name="btn" value="Login" class="btn btn-outline-danger float-right login_btn"> -->
-                </div>
-            </form>
-        </div>
+<body class="fix-header fix-sidebar">
+    <!-- Preloader - style you can find in spinners.css -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
     </div>
-</div>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#actionBtn").on("click", function(){
-			var userId = $("#userid").val();
-			var password = $("#password").val();
-			$.ajax({
-				url:"/login",
-				method:"POST",
-				data: {"_token": "{{ csrf_token() }}", "userId": userId, "password":password},
-				dataType: "JSON",
-				success:function(data){
-					
-				}
-			});
-		});
+    <!-- Main wrapper  -->
+    <div id="main-wrapper">
 
-	});
-</script>
+        <div class="unix-login">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4">
+                        <div class="login-content card">
+                            <div class="login-form">
+                                <h4>Login</h4>
+                                <form>
+                                    <div class="form-group">
+                                        <label>Userid</label>
+                                        <input type="email" class="form-control" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="checkbox">
+                                        <label class="pull-right">
+        										<a href="#">Forgotten Password?</a>
+        									</label>
+
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- End Wrapper -->
+    <!-- All Jquery -->
+    <script src="{{asset('assets/js/lib/jquery/jquery.min.js')}}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{{asset('assets/js/lib/bootstrap/js/popper.min.js')}}"></script>
+    <script src="{{asset('assets/js/lib/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{{asset('assets/js/jquery.slimscroll.js')}}"></script>
+    <!--Menu sidebar -->
+    <script src="{{asset('assets/js/sidebarmenu.js')}}"></script>
+    <!--stickey kit -->
+    <script src="{{asset('assets/js/lib/sticky-kit-master/dist/sticky-kit.min.js')}}"></script>
+    <!--Custom JavaScript -->
+    <script src="{{asset('assets/js/custom.min.js')}}"></script>
+
 </body>
+
 </html>

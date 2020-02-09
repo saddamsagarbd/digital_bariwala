@@ -5,26 +5,36 @@ namespace App\Http\Controllers\home;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use DB;
 use Session;
+use redirect;
 
 class homeController extends Controller
 {
     public function index(){
     	return view('login.login');
     }
-    public function login(Request $request){
+    public function loginCheck(Request $request){
     	$validation = $request->validate([
 	        'userId' => 'required|min:11',
 	        'password' => 'required|min:10',
     	]);
     	
     	if(!empty($validation)){
-	    	$user = User::where('mobile_no', $request->userId)->first()->toArray();
+    		$userId = $request->userId;
+    		$password = md5($request->password);
+	    	$user = DB::table('users')
+	    				->where('mobile_no', $userId)
+	    				->where('password', $password)
+	    				->first();
 	    	if(empty($user)){
-	    		echo "User not found";
+	    		Session::flash('message', 'Incorrect Login information!');
+	    		return redirect('/');
+	    	}else{
+	    		Session::flash('message', 'Login Successful.');
+	    		Session::put('username', $user->name);
+		    	return redirect('/dashboard');
 	    	}
-	    	Session::put("user", $user);
-	    	return redirect('/dashboard')->with('status', 'Profile updated!');
     	}
     }
     public function dashboard(){

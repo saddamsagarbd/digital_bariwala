@@ -12,5 +12,8 @@
 */
 
 Route::get('/','home\homeController@index');
-Route::post('/login','home\homeController@login');
-Route::get('/dashboard','home\homeController@dashboard');
+Route::post('/login-check','home\homeController@loginCheck');
+Route::get('/dashboard','DashboardController@index');
+Route::get('/session','DashboardController@session');
+Route::get('/user','DashboardController@userlist');
+Route::post('/create-user','DashboardController@create')->name('create-user');
