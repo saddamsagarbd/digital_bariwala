@@ -66,4 +66,14 @@ class DashboardController extends Controller
 		return response()
 					->json(['errors' => 'User not created. Something wrong happen.']);
 	}
+
+	/*
+		get individual user data
+		@param ID
+		return array or object
+	*/
+		public function getuserbyid($id){
+			$user = User::find($id);
+			return response()->json(['data'=>$user]);
+		}
 }

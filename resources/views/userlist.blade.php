@@ -35,9 +35,15 @@ User
                                 <td>{{ $user->address }}</td>
                                 <td>{{ $user->status }}</td>
                                 <td>
-                            		<a href="{{$user->id}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
-                            		<a href="{{$user->id}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Details</a>
-                            		<a href="{{$user->id}}" class="btn btn-success btn-sm"><i class="fa fa-sign-in"></i> Impersionate</a>
+                                	<button class="edit btn btn-success btn-sm"  id="{{$user->id}}">
+                                		<i class="fa fa-edit"></i> Edit
+                                	</button>
+                            		<button class="details btn btn-primary btn-sm"  id="{{$user->id}}">
+                                		<i class="fa fa-eye"></i> Details
+                                	</button>
+                            		<button class="impersionate btn btn-success btn-sm"  id="{{$user->id}}">
+                                		<i class="fa fa-sign-in"></i> Impersionate
+                                	</button>
                                 </td>         
                             </tr>
                             @endforeach
@@ -130,7 +136,8 @@ User
 					      </div>
 					      <div class="modal-footer">
 					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+					        
+					        <button type="submit" id="actionBtn" class="btn btn-success"> Save</button>
 					      </div>
 					    </div>
 				    </form>
@@ -158,7 +165,6 @@ User
 				'floors' : $('#floors').val(),
 				'units' : $('#units').val()
 			};
-			console.log(formData);
 			$.ajax({
 				url: "{{ route('create-user') }}",
 				method: "POST",
@@ -184,6 +190,25 @@ User
 
 			})
 		});
+	});
+	$(document).on("click", ".edit", function(){
+		var id = $(this).attr("id");
+		$.ajax({
+			url:"getuserbyid/"+ id + "/edit",
+			dataType:"json",
+			success:function(data){
+				$("#first_name").val(data.data.first_name);
+				$("#last_name").val(data.data.last_name);
+				$("#gender").val(data.data.gender);
+				$("#mobile_no").val(data.data.mobile_no);
+				$("#address").val(data.data.address);
+				$("#floors").val(data.data.floors);
+				$("#units").val(data.data.units);
+				$("#actionBtn").html("Update");
+				$("#userModal").modal('show');
+			}
+		});
+
 	});
 </script>
 @endsection

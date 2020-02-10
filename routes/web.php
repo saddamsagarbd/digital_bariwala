@@ -17,3 +17,4 @@ Route::get('/dashboard','DashboardController@index');
 Route::get('/session','DashboardController@session');
 Route::get('/user','DashboardController@userlist');
 Route::post('/create-user','DashboardController@create')->name('create-user');
+Route::get('/getuserbyid/{id}/edit','DashboardController@getuserbyid')->name('getuserbyid');
