@@ -22,7 +22,8 @@ class DashboardController extends Controller
 	user lit
     */
     public function userlist(){
-    	return view('userlist');
+    	$users = User::where('user_type', 2)->where('status', 1)->get();
+    	return view('userlist', compact('users'));
     }
 
     /*
