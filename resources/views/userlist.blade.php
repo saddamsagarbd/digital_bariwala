@@ -135,6 +135,8 @@ User
 				        
 					      </div>
 					      <div class="modal-footer">
+					      	<input type="hidden" id="action" value="save">
+					      	<input type="hidden" id="id" value="{{$user->id}}">
 					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					        
 					        <button type="submit" id="actionBtn" class="btn btn-success"> Save</button>
@@ -163,7 +165,9 @@ User
 				'mobile_no' : $('#mobile_no').val(),
 				'address' : $('#address').val(),
 				'floors' : $('#floors').val(),
-				'units' : $('#units').val()
+				'units' : $('#units').val(),
+				'action': $('#action').val(),
+				'id': $('#id').val(),
 			};
 			$.ajax({
 				url: "{{ route('create-user') }}",
@@ -205,6 +209,8 @@ User
 				$("#floors").val(data.data.floors);
 				$("#units").val(data.data.units);
 				$("#actionBtn").html("Update");
+				$('#id').val(data.data.id);
+				$('#action').val("update");
 				$("#userModal").modal('show');
 			}
 		});

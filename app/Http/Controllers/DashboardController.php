@@ -44,25 +44,44 @@ class DashboardController extends Controller
 		if($error->fails()){
 			return response()->json(['errors' => $error->errors()->all()]);
 		}
-		$user = User::where('status', 1)->where('user_type', 2)->get();
-		$n = count($user) + 1;
 
 		$u_data = new User();
-		$u_data->user_id = date('Y').$n;
-		$u_data->first_name = $request->first_name;
-		$u_data->last_name = $request->last_name;
-		$u_data->gender = $request->gender;
-		$u_data->mobile_no = $request->mobile_no;
-		$u_data->address = $request->address;
-		$u_data->floors = $request->floors;
-		$u_data->units = $request->units;
-		$u_data->password = md5($request->mobile_no);
-		$u_data->user_type = 2;
-		$u_data->created_at = date('Y-m-d H:i:s');
-		if($u_data->save()){
-			return response()
-					->json(['success' => 'User added successfully']);
+		if($request->action == "save"){
+			$user = User::where('status', 1)->where('user_type', 2)->get();
+			$n = count($user) + 1;
+
+			$u_data->user_id = date('Y').$n;
+			$u_data->first_name = $request->first_name;
+			$u_data->last_name = $request->last_name;
+			$u_data->gender = $request->gender;
+			$u_data->mobile_no = $request->mobile_no;
+			$u_data->address = $request->address;
+			$u_data->floors = $request->floors;
+			$u_data->units = $request->units;
+			$u_data->password = md5($request->mobile_no);
+			$u_data->user_type = 2;
+			$u_data->created_at = date('Y-m-d H:i:s');
+			if($u_data->save()){
+				return response()
+						->json(['success' => 'User added successfully']);
+			}
+			
 		}
+		if($request->action == "update"){
+			$user = User::find($request->id);
+			$user->first_name = $request->first_name;
+			$user->last_name = $request->last_name;
+			$user->gender = $request->gender;
+			$user->mobile_no = $request->mobile_no;
+			$user->address = $request->address;
+			$user->floors = $request->floors;
+			$user->units = $request->units;
+			if($user->save()){
+				return response()
+						->json(['success' => 'Data successfully updated.']);
+			}
+		}		
+		
 		return response()
 					->json(['errors' => 'User not created. Something wrong happen.']);
 	}
