@@ -29,11 +29,12 @@ class homeController extends Controller
 	    				->first();
 	    	if(empty($user)){
 	    		Session::flash('message', 'Incorrect Login information!');
-	    		return redirect('/');
+	    		return redirect::to('/');
 	    	}else{
 	    		Session::flash('message', 'Login Successful.');
-	    		Session::put('username', $user->name);
-		    	return redirect('/dashboard');
+	    		Session::put('username', $user->first_name);
+                return redirect('dashboard')->with('user_name', $user->first_name);
+		    	// return redirect::to('/dashboard');
 	    	}
     	}
     }

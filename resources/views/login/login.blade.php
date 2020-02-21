@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,14 +39,15 @@
                         <div class="login-content card">
                             <div class="login-form">
                                 <h4>Login</h4>
-                                <form>
+                                <form id="login">
+                                    <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
                                         <label>Userid</label>
-                                        <input type="email" class="form-control" placeholder="Email">
+                                        <input type="text" id="user_id" name="user_id" class="form-control" placeholder="Put your user id here...">
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <input type="password" id="password" name="password" class="form-control" placeholder="Password">
                                     </div>
                                     <div class="checkbox">
                                         <label class="pull-right">
@@ -55,7 +55,7 @@
         									</label>
 
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
+                                    <input type="submit" value="Login" class="btn btn-primary btn-flat m-b-30 m-t-30">
                                 </form>
                             </div>
                         </div>
@@ -67,7 +67,8 @@
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->
-    <script src="{{asset('assets/js/lib/jquery/jquery.min.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <!-- <script src="{{asset('assets/js/lib/jquery/jquery.min.js')}}"></script> -->
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{{asset('assets/js/lib/bootstrap/js/popper.min.js')}}"></script>
     <script src="{{asset('assets/js/lib/bootstrap/js/bootstrap.min.js')}}"></script>
@@ -79,6 +80,27 @@
     <script src="{{asset('assets/js/lib/sticky-kit-master/dist/sticky-kit.min.js')}}"></script>
     <!--Custom JavaScript -->
     <script src="{{asset('assets/js/custom.min.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#login").submit(function(e){
+                e.preventDefault();
+                var formData = {
+                    userId: $("#user_id").val(),
+                    password: $("#password").val(),
+                    _token: $("#_token").val()
+                };
+                $.ajax({
+                    url:"/login-check",
+                    type: "POST",
+                    data: formData,
+                    dataTyep: "JSON",
+                    success: function(response){
+
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 
