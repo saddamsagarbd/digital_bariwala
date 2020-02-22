@@ -38,7 +38,9 @@
                     <div class="col-lg-4">
                         <div class="login-content card">
                             <div class="login-form">
-                                <h4>Login</h4>
+                                <div id="error_msg">
+                                    
+                                </div>
                                 <form id="login">
                                     <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
@@ -90,14 +92,22 @@
                     _token: $("#_token").val()
                 };
                 $.ajax({
-                    url:"/login-check",
+                    url:"{{url('/login-check')}}",
                     type: "POST",
                     data: formData,
                     dataTyep: "JSON",
                     success: function(response){
-
+                        if(response.status == "error"){
+                            $("#error_msg").html("<p class='alert alert-danger'>"+ response.message+"</p>");
+                            setTimeout(function() { $("#error_msg").fadeIn("slow"); }, 1000);
+                        }else{
+                            window.location.replace(response.url);
+                        }
                     }
                 });
+            });
+            $("#erease").on("click", function(){
+                $("#error_msg").html();
             });
         });
     </script>

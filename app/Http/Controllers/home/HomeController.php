@@ -7,10 +7,17 @@ use Illuminate\Http\Request;
 use App\User;
 use DB;
 use Session;
-use redirect;
+use Illuminate\support\Facades\Redirect;
+use Illuminate\Routing\UrlGenerator;
 
 class homeController extends Controller
 {
+    protected $url;
+
+    public function __construct(UrlGenerator $url)
+    {
+        $this->url = $url;
+    }
     public function index(){
     	return view('login.login');
     }
@@ -27,14 +34,15 @@ class homeController extends Controller
 	    				->where('mobile_no', $userId)
 	    				->where('password', $password)
 	    				->first();
+
 	    	if(empty($user)){
 	    		Session::flash('message', 'Incorrect Login information!');
-	    		return redirect::to('/');
+	    		return response()->json(['status' => "error", 'message' => "invalid login credential"]);
 	    	}else{
 	    		Session::flash('message', 'Login Successful.');
 	    		Session::put('username', $user->first_name);
-                return redirect('dashboard')->with('user_name', $user->first_name);
-		    	// return redirect::to('/dashboard');
+                $redirect_url = '/dashboard';
+		    	return response()->json(['status' => "success", 'message' => "login successful", 'url'=> $this->url->to('/dashboard')]);
 	    	}
     	}
     }
