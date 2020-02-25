@@ -9,8 +9,11 @@
                         <li class="nav-label">Home</li>
                         <li> <a href="{{url('dashboard')}}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</a>
                         </li>
-                        <li class="nav-label">Features</li>
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">User<span class="label label-rouded label-warning pull-right">6</span></span></a>
+                        <?php
+                            $userType = Session::get('user_type');
+                            if($userType === 1){
+                        ?>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">User</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{url('user')}}">User List</a></li>
                             </ul>
@@ -37,6 +40,25 @@
                             </li>
                             </ul>
                         </li>
+
+                        <?php
+                           }
+                        ?>
+                        <li> <a href="#" aria-expanded="false"><i class="fa fa-building"></i><span class="hide-menu">Apartment Details</span></a>
+                        </li>
+                        <li> <a href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Tenant Details</span></a>
+                        </li>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-calculator"></i><span class="hide-menu">Accounts</span></a>
+                            <ul aria-expanded="false" class="collapse">
+
+                            <li><a href="{{url('rent-details')}}">Rent Details</a></li>
+                            <li><a href="{{url('rent-schedule')}}">Rent Schedule</a></li>
+                            <li><a href="{{url('rent-config')}}">Rent Config</a></li>
+                            </ul>
+                        </li>
+
+                        
+                        
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

@@ -39,8 +39,12 @@ class homeController extends Controller
 	    		Session::flash('message', 'Incorrect Login information!');
 	    		return response()->json(['status' => "error", 'message' => "invalid login credential"]);
 	    	}else{
+                
 	    		Session::flash('message', 'Login Successful.');
-	    		Session::put('username', $user->first_name);
+                Session::put('user_id', $user->user_id);
+                Session::put('first_name', $user->first_name);
+                Session::put('last_name', $user->last_name);
+                Session::put('user_type', $user->user_type);
                 $redirect_url = '/dashboard';
 		    	return response()->json(['status' => "success", 'message' => "login successful", 'url'=> $this->url->to('/dashboard')]);
 	    	}
@@ -48,5 +52,9 @@ class homeController extends Controller
     }
     public function dashboard(){
     	return view('sa_dashboard');
+    }
+    public function logout(){
+        Session::flush();
+        return redirect('/');
     }
 }
