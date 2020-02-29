@@ -55,97 +55,97 @@ User
     </div>
 </div>    
 <!-- Modal -->
-				<div class="modal" id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				  <div class="modal-dialog" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				          <span aria-hidden="true">&times;</span>
-				        </button>
-				      </div>
-				      <div class="modal-body">
-				      	<span id="form_result"></span>
-				      	<form id="user_form" enctype="multipart/form-data" action="javascript:void(0)" method="post">
-				            <div class="form-body">
-				                <div class="row p-t-20">
-				                    <div class="col-md-6">
-				                        <div class="form-group">
-				                            <label class="control-label">First Name</label>
-				                            <input type="text" id="first_name" class="form-control" placeholder="John doe">
-				                            <small class="form-control-feedback"> This is inline help </small> </div>
-				                    </div>
-				                    <!--/span-->
-				                    <div class="col-md-6">
-				                        <div class="form-group">
-				                            <label class="control-label">Last Name</label>
-				                            <input type="text" id="last_name" class="form-control form-control-danger" placeholder="12n">
-				                            <small class="form-control-feedback"> This field has error. </small> </div>
-				                    </div>
-				                    <!--/span-->
-				                </div>
-				                <!--/row-->
-				                <div class="row">
-				                    <div class="col-md-6">
-				                        <div class="form-group has-success">
-				                            <label class="control-label">Gender</label>
-				                            <select id="gender" class="form-control custom-select">
-				                                <option value="1">Male</option>
-				                                <option value="2">Female</option>
-				                            </select>
-				                            <small class="form-control-feedback"> Select your gender </small> </div>
-				                    </div>
-				                    <!--/span-->
-				                    <div class="col-md-6">
-				                        <div class="form-group">
-				                            <label class="control-label">Mobile number</label>
-				                            <input type="text" class="form-control" id="mobile_no" placeholder="01700000000">
-				                        </div>
-				                    </div>
-				                    <!--/span-->
-				                </div>
-				                <!--/row-->
-				                <div class="row">
-				                    <div class="col-md-12">
-				                        <div class="form-group">
-				                            <label class="control-label">Address</label>
-				                            <textarea class="textarea_editor form-control" rows="5" id="address" placeholder="Put you address ..." style="height:150px"></textarea>
-				                        </div>
-				                    </div>
-				                    <!--/span-->
-				                </div>
-				                <!--/row-->
-				                <div class="row">
-				                    <div class="col-md-6">
-				                        <div class="form-group">
-				                            <label class="control-label">Number of Floors</label>
-				                            <input type="number" id="floors" class="form-control form-control-danger" placeholder="3">
-				                        </div>
-				                    </div>
-				                    <!--/span-->
-				                    <div class="col-md-6">
-				                        <div class="form-group">
-				                            <label class="control-label">Unit in each floor</label>
-				                            <input type="number" id="units" class="form-control" placeholder="3">
-				                        </div>
-				                    </div>
-				                    <!--/span-->
-				                </div>
-				            </div>
-				        
-					      </div>
-					      <div class="modal-footer">
-					      	<input type="hidden" id="action" value="save">
-					      	<input type="hidden" id="id" value="{{$user->id}}">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					        
-					        <button type="submit" id="actionBtn" class="btn btn-success"> Save</button>
-					      </div>
-					    </div>
-				    </form>
-				  </div>
-				</div>
-				<!-- modal end -->    
+<div class="modal" id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<span id="form_result"></span>
+      	<form id="user_form" enctype="multipart/form-data" action="javascript:void(0)" method="post">
+            <div class="form-body">
+                <div class="row p-t-20">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">First Name</label>
+                            <input type="text" id="first_name" class="form-control" placeholder="John doe">
+                            <small class="form-control-feedback"> This is inline help </small> </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Last Name</label>
+                            <input type="text" id="last_name" class="form-control form-control-danger" placeholder="12n">
+                            <small class="form-control-feedback"> This field has error. </small> </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group has-success">
+                            <label class="control-label">Gender</label>
+                            <select id="gender" class="form-control custom-select">
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                            </select>
+                            <small class="form-control-feedback"> Select your gender </small> </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Mobile number</label>
+                            <input type="text" class="form-control" id="mobile_no" placeholder="01700000000">
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label">Address</label>
+                            <textarea class="textarea_editor form-control" rows="5" id="address" placeholder="Put you address ..." style="height:150px"></textarea>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Number of Floors</label>
+                            <input type="number" id="floors" class="form-control form-control-danger" placeholder="3">
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Unit in each floor</label>
+                            <input type="number" id="units" class="form-control" placeholder="3">
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+            </div>
+        
+	      </div>
+	      <div class="modal-footer">
+	      	<input type="hidden" id="action" value="save">
+	      	<input type="hidden" id="id" value="{{$user->id}}">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        
+	        <button type="submit" id="actionBtn" class="btn btn-success"> Save</button>
+	      </div>
+	    </div>
+    </form>
+  </div>
+</div>
+<!-- modal end -->    
 @endsection
 @section('script')
 <script type="text/javascript">

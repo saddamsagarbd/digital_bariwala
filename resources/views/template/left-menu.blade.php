@@ -44,7 +44,7 @@
                         <?php
                            }
                         ?>
-                        <li> <a href="#" aria-expanded="false"><i class="fa fa-building"></i><span class="hide-menu">Apartment Details</span></a>
+                        <li> <a href="{{url('apartment-details')}}" aria-expanded="false"><i class="fa fa-building"></i><span class="hide-menu">Apartment Details</span></a>
                         </li>
                         <li> <a href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Tenant Details</span></a>
                         </li>
@@ -55,10 +55,7 @@
                             <li><a href="{{url('rent-schedule')}}">Rent Schedule</a></li>
                             <li><a href="{{url('rent-config')}}">Rent Config</a></li>
                             </ul>
-                        </li>
-
-                        
-                        
+                        </li>                       
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
