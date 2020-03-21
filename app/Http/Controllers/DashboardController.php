@@ -62,6 +62,14 @@ class DashboardController extends Controller
 			$u_data->user_type = 2;
 			$u_data->created_at = date('Y-m-d H:i:s');
 			if($u_data->save()){
+				$basic  = new \Nexmo\Client\Credentials\Basic('00653125', 'UC2e6a6a9tsnH3Wm');
+				$client = new \Nexmo\Client($basic);
+
+				$message = $client->message()->send([
+					'to' => $request->mobile_no,
+					'from' => 'Digital Bariwala',
+					'text' => 'User has been created. Please Login with given phone number as your username and password.'
+				]);
 				return response()
 						->json(['success' => 'User added successfully']);
 			}

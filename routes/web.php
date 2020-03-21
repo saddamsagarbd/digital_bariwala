@@ -20,3 +20,4 @@ Route::post('/create-user','DashboardController@create')->name('create-user');
 Route::get('/getuserbyid/{id}/edit','DashboardController@getuserbyid')->name('getuserbyid');
 Route::get('/logout','home\homeController@logout');
 Route::get('/apartment-details','apartment\ApartmentController@index');
+Route::post('/aparmentinfo-save','apartment\ApartmentController@saveApartmentInfo')->name('aparmentinfo-save');
