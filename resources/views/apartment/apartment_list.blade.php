@@ -40,7 +40,15 @@ Apartment List
                                 <td><?=$apartment['monthly_rent']."Tk.";?></td>
                                 <td><?=($apartment['is_occupied'] == 0)?'<label class="badge badge-success">Available</label>':'<label class="badge badge-danger">Occupied</label>';?></td>
                                 <td>
-                                	<button id="edit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>Edit</button>
+                                	<button id="edit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Edit</button>
+                                	<?php
+                                		if($apartment['is_occupied'] == 0){
+                                	?>
+                                	<a href="<?php echo url('').'/to-rent/'.$apartment['id'];?>" class="btn btn-success btn-sm"><i class="fa fa-download"></i>&nbsp;To-rent</a>
+                                	<?php
+
+                                		}
+                                	?>
                                 </td>
                             </tr>
                             <?php } ?>
@@ -233,7 +241,6 @@ Apartment List
 					$("#submit_result").html(html);
 				}
 			});
-
 		});
 	});
 </script>

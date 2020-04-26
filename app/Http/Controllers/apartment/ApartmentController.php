@@ -8,6 +8,7 @@ use App\User;
 use App\Apartment;
 use Session;
 use Validator;
+use DB;
 use Nexmo\Laravel\Facade\Nexmo;
 
 class ApartmentController extends Controller
@@ -63,5 +64,17 @@ class ApartmentController extends Controller
 			return response()
 			->json(['status' => "success",'message' => "Apartment info saved."]);
 		}
+	}
+
+	function toRentApartment($apartmentId){
+		// $apartment_details = Apartment::where('id', $apartmentId)->first();
+		$apartment_id = DB::table('apartments')->select('id')->where('id', $apartmentId)->first();
+		$apartment_id = $apartment_id->id;
+
+		return view('apartment.apartment_to_rent', compact('apartment_id'));
+		
+		
+
+
 	}
 }

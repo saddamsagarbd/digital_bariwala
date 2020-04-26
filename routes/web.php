@@ -21,3 +21,4 @@ Route::get('/getuserbyid/{id}/edit','DashboardController@getuserbyid')->name('ge
 Route::get('/logout','home\homeController@logout');
 Route::get('/apartment-details','apartment\ApartmentController@index');
 Route::post('/aparmentinfo-save','apartment\ApartmentController@saveApartmentInfo')->name('aparmentinfo-save');
+Route::get('/to-rent/{id}', 'apartment\ApartmentController@toRentApartment');
