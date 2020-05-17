@@ -67,14 +67,10 @@ class ApartmentController extends Controller
 	}
 
 	function toRentApartment($apartmentId){
-		// $apartment_details = Apartment::where('id', $apartmentId)->first();
 		$apartment_id = DB::table('apartments')->select('id')->where('id', $apartmentId)->first();
 		$apartment_id = $apartment_id->id;
 
 		return view('apartment.apartment_to_rent', compact('apartment_id'));
-		
-		
-
-
 	}
+
 }

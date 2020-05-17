@@ -19,6 +19,7 @@ Route::get('/user','DashboardController@userlist');
 Route::post('/create-user','DashboardController@create')->name('create-user');
 Route::get('/getuserbyid/{id}/edit','DashboardController@getuserbyid')->name('getuserbyid');
 Route::get('/logout','home\homeController@logout');
-Route::get('/apartment-details','apartment\ApartmentController@index');
+Route::get('/apartment-details','apartment\ApartmentController@index')->name('apartment-details');
 Route::post('/aparmentinfo-save','apartment\ApartmentController@saveApartmentInfo')->name('aparmentinfo-save');
 Route::get('/to-rent/{id}', 'apartment\ApartmentController@toRentApartment');
+Route::post('/rent-apartment', 'TanentController@saveTanent')->name('rent-apartment');
