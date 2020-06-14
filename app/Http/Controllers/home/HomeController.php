@@ -51,7 +51,8 @@ class homeController extends Controller
     	}
     }
     public function dashboard(){
-    	return view('sa_dashboard');
+    	// return view('sa_dashboard');
+        return view('layout.app');
     }
     public function logout(){
         Session::flush();

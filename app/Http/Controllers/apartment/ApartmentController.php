@@ -9,15 +9,22 @@ use App\Apartment;
 use Session;
 use Validator;
 use DB;
+use Redirect;
 use Nexmo\Laravel\Facade\Nexmo;
 
 class ApartmentController extends Controller
 {
-	function index(){
+	function index()
+	{
+		$apartments = Apartment::all();
+		return view('apartment.apartments', compact('apartments'));
+	}
+
+	public function ApartmentForm()
+	{
 		$user_id = Session::get('user_id');
 		$user = User::where('user_id', $user_id)->first();
-		$apartments = Apartment::all();
-		return view('apartment.apartment_list', compact('user', 'apartments'));
+		return view('apartment.apartment_form', compact('user'));
 	}
 	function saveApartmentInfo(Request $req){
 		$rules = [
@@ -35,14 +42,20 @@ class ApartmentController extends Controller
 			'meter_no' 			=> 'required'
 		];
 		
-		$error = Validator::make($req->all(), $rules);
-		if($error->fails()){
-			return response()->json(['status'=> "error",'errors' => $error->errors()->all()]);
+		$errors = Validator::make($req->all(), $rules);
+		if($errors->fails()){
+			return Redirect::back()->withErrors($errors);
 		}
 
-		$unit_name = Apartment::where('unit_name', $req->unit_name)->get();
+		$id = $req->apartment_id;
+
+		if($id == NULL || $id == ''){
+			$unit_name = Apartment::where('unit_name', $req->unit_name)->get();
+		}else{
+			$unit_name = Apartment::where('unit_name', $req->unit_name)->where('id', '!=', $id)->get();
+		}
 		if(count($unit_name)>0){
-			return response()->json(['status'=> "error",'error' => "Unit name already exist"]);
+			return Redirect::back()->withErrors(['Unit name already exist']);
 		}
 		$apartment = new Apartment();
 		$apartment->floor 			= $req->floor;
@@ -59,11 +72,54 @@ class ApartmentController extends Controller
 		$apartment->meter_no 		= $req->meter_no;
 		$apartment->created_by 		= Session::get('user_id');
 		$apartment->created_at 		= date('Y-m-d H:i:s');
-		
-		if($apartment->save()){			
-			return response()
-			->json(['status' => "success",'message' => "Apartment info saved."]);
+
+		if($id == NULL || $id == ''){
+			if($apartment->save()){	
+				return redirect('/apartments')
+				        ->with('success', 'Apartment info saved.');
+			}
+		}else{
+			$update = $this->updateApartmentInfo($req);
+			if($update){
+				return redirect('/apartments')
+				        ->with('success', 'Apartment info updated successfully.');
+			}else{
+				return redirect('/apartment-form')
+				        ->with('error', 'Apartment info not updated.');
+			}
 		}
+	}
+
+	public function updateApartmentInfo($param)
+	{
+		$update = DB::table('apartments')
+            ->where('id', $param->apartment_id)
+            ->update([
+            	'floor' => $param->floor,
+            	'unit' => $param->unit,
+            	'unit_name' => $param->unit_name,
+            	'bed_room' => $param->bed_room,
+            	'wash_room' => $param->wash_room,
+            	'drawing_dining' => $param->drawing_dining,
+            	'kitchen_room' => $param->kitchen_room,
+            	'belcony' => $param->belcony,
+            	'unit_size' => $param->unit_size,
+            	'unit_advance' => $param->unit_advance,
+            	'monthly_rent' => $param->monthly_rent,
+            	'meter_no' => $param->meter_no,
+            	'updated_by' => Session::get('user_id'),
+            	'updated_at' => date('Y-m-d H:i:s')
+            ]);
+        return $update;
+	}
+
+	public function editApartmentInfo($id)
+	{
+		$apartment = Apartment::where('id', $id)->first();
+		$user_id = Session::get('user_id');
+		$user = User::where('user_id', $user_id)->first();
+		return view('apartment.apartment_form', compact('user', 'apartment'));
+
 	}
 
 	function toRentApartment($apartmentId){

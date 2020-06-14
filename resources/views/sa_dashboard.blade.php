@@ -1,374 +1,322 @@
-@extends('master')
+@extends('layout.app')
 @section('page-title')
 Dashboard
 @endsection
-@section('page-label')
-Dashboard
-@endsection
-@section('content')
-<!-- Start Page Content -->
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="card bg-primary p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="ti-bag f-s-40"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white">278</h2>
-                                    <p class="m-b-0">Total Users</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card bg-pink p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="ti-comment f-s-40"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white">278</h2>
-                                    <p class="m-b-0">Paid Users</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card bg-success p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="ti-vector f-s-40"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white">$27647</h2>
-                                    <p class="m-b-0">Defaulter</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card bg-danger p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="ti-location-pin f-s-40"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white">278</h2>
-                                    <p class="m-b-0">Total Flats</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-title">
-                                <h4>Sales</h4>
-                            </div>
-                            <div class="sales-chart">
-                                <div class="ct-bar-chart" style="height:350px"></div>
-                            </div>
-                        </div>
-                        <!-- /# card -->
-                    </div>
-                    <!-- /# column -->
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-title">
-                                <h4>Apartment's Details</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover ">
-                                        <thead>
-                                            <tr>
-                                                <th>Apartment</th>
-                                                <th>Occupy</th>
-                                                <th>Vacant</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Unknown</td>
-                                                <td>2,456</td>
-                                                <td>00:02:36</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Apple iPad</td>
-                                                <td>1,006</td>
-                                                <td>00:03:41</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Apple iPhone</td>
-                                                <td>68</td>
-                                                <td>00:04:10</td>
-                                            </tr>
-                                            <tr>
-                                                <td>HTC Desire</td>
-                                                <td>38</td>
-                                                <td>00:01:40</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Samsung</td>
-                                                <td>20</td>
-                                                <td>00:04:54</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Apple iPad</td>
-                                                <td>1,006</td>
-                                                <td>00:03:41</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card nestable-cart">
-                            <div class="card-title">
-                                <h4>World Map</h4>
-
-                            </div>
-                            <div class="datamap">
-                                <div id="world-datamap"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-block">
-                                <h4 class="card-title">Visitor</h4>
-                                <div class="ct-svg-chart" style="height:420px"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /# column -->
-                </div>
-                <!-- /# row -->
-
-                <div class="row">
-
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-title">
-                                <h4>Project</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="current-progress">
-                                    <div class="progress-content">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="progress-text">Website</div>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="current-progressbar">
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-primary w-40" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-                                                            40%
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-content">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="progress-text">Android</div>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="current-progressbar">
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-primary w-60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                                                            60%
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-content">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="progress-text">Ios</div>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="current-progressbar">
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-primary w-70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                                            70%
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-content">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="progress-text">Mobile</div>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="current-progressbar">
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-primary w-90" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                                            90%
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-content">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="progress-text">Android</div>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="current-progressbar">
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-primary w-60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                                                            60%
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-content">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="progress-text">Ios</div>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="current-progressbar">
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-primary w-70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                                            70%
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-content">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="progress-text">Mobile</div>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="current-progressbar">
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-primary w-90" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                                            90%
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /# column -->
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-title">
-                                <h4>Messages</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="recent-meaasge">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <a href="#"><img alt="..." src="images/avatar/1.jpg" class="media-object"></a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="media-heading">john doe</h4>
-                                            <div class="meaasge-date">15 minutes Ago</div>
-                                            <p class="f-s-12">We are happy about your service </p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <a href="#"><img alt="..." src="images/avatar/2.jpg" class="media-object"></a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="media-heading">Mr. John</h4>
-                                            <div class="meaasge-date">40 minutes ago</div>
-                                            <p class="f-s-12">Quick service and good serve </p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <a href="#"><img alt="..." src="images/avatar/3.jpg" class="media-object"></a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="media-heading">Mr. Michael</h4>
-                                            <div class="meaasge-date">1 minutes ago</div>
-                                            <p class="f-s-12">We like your birthday cake </p>
-                                        </div>
-                                    </div>
-                                    <div class="media no-border">
-                                        <div class="media-left">
-                                            <a href="#"><img alt="..." src="images/avatar/2.jpg" class="media-object"></a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="media-heading">Mr. John</h4>
-                                            <div class="meaasge-date">40 minutes ago</div>
-                                            <p class="f-s-12">Quick service and good serve </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-title">
-                                <h4>Todo</h4>
-                            </div>
-                            <div class="todo-list">
-                                <div class="tdl-holder">
-                                    <div class="tdl-content">
-                                        <ul>
-                                            <li class="color-primary">
-                                                <label>
-                                                <input type="checkbox"><i class="bg-primary"></i><span>Post three to six times on Twitter.</span>
-                                                <a href='#' class="ti-close"></a>
-                                            </label>
-                                            </li>
-                                            <li class="color-success">
-                                                <label>
-                                                <input type="checkbox" checked><i class="bg-success"></i><span>Post one to two times on Facebook.</span>
-                                                <a href='#' class="ti-close"></a>
-                                            </label>
-                                            </li>
-                                            <li class="color-warning">
-                                                <label>
-                                                <input type="checkbox" checked><i class="bg-warning"></i><span>Follow back those who follow you</span>
-                                                <a href='#' class="ti-close"></a>
-                                            </label>
-                                            </li>
-                                            <li class="color-danger">
-                                                <label>
-                                                <input type="checkbox" checked><i class="bg-danger"></i><span>Connect with one new person</span>
-                                                <a href='#' class="ti-close"></a>
-                                            </label>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <input type="text" class="tdl-new form-control" placeholder="Type here">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End PAge Content -->
+@section('page-content')
+<div class="row">
+	<div class="col-lg-8 grid-margin d-flex flex-column">
+		<div class="row">
+			<div class="col-md-4 grid-margin stretch-card">
+				<div class="card">
+					<div class="card-body text-center">
+						<div class="text-primary mb-4">
+							<i class="mdi mdi-account-multiple mdi-36px"></i>
+							<p class="font-weight-medium mt-2">Customers</p>
+						</div>
+						<h1 class="font-weight-light">45679</h1>
+						<p class="text-muted mb-0">Increase by 20%</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 grid-margin stretch-card">
+				<div class="card">
+					<div class="card-body text-center">
+						<div class="text-danger mb-4">
+							<i class="mdi mdi-chart-pie mdi-36px"></i>
+							<p class="font-weight-medium mt-2">Orders</p>
+						</div>
+						<h1 class="font-weight-light">80927</h1>
+						<p class="text-muted mb-0">Increase by 60%</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 grid-margin stretch-card">
+				<div class="card">
+					<div class="card-body text-center">
+						<div class="text-info mb-4">
+							<i class="mdi mdi-car mdi-36px"></i>
+							<p class="font-weight-medium mt-2">Delivery</p>
+						</div>
+						<h1 class="font-weight-light">22339</h1>
+						<p class="text-muted mb-0">Decrease by 2%</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row flex-grow-1">
+			<div class="col-lg-6 grid-margin grid-margin-lg-0 stretch-card">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Product categories</h4>
+						<canvas id="sales-status-chart"></canvas>
+						<div id="sales-status-chart-legend" class="mt-3 chartjs-legend"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 stretch-card">
+				<div class="card">
+					<div class="card-body d-flex flex-column justify-content-between">
+						<div class="d-flex justify-content-between align-items-start">
+							<h4 class="card-title">Product visits</h4>
+							<div class="dropdown">
+								<button class="btn btn-sm btn-outline-secondary btn-rounded dropdown-toggle text-black" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									This week
+								</button>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+									<a class="dropdown-item" href="#">This day</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="#">This month</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="#">This week</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="#">This year</a>
+								</div>
+							</div>
+						</div>
+						<canvas id="sales-chart"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-4 grid-margin stretch-card">
+		<div class="card d-flex flex-column justify-content-between">
+			<div class="card-body">
+				<div class="d-flex justify-content-between align-items-start">
+					<h4 class="card-title">Revenue</h4>
+					<div class="dropdown mb-4">
+						<button class="btn btn-sm btn-outline-secondary btn-rounded dropdown-toggle text-black" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							This week
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+							<a class="dropdown-item" href="#">This day</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">This month</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">This week</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">This year</a>
+						</div>
+					</div>
+				</div>
+				<h4 class="font-weight-light">Total revenue</h4>
+				<h1 class="font-weight-normal mb-0">36568</h1>
+				<div class="d-md-flex justify-content-start mt-5">
+					<div class="mb-3 mb-lg-0">
+						<h4 class="font-weight-light text-primary">+40%</h4>
+						<p class="text-primary mb-0">Growth</p>
+					</div>
+					<div class="mb-3 mb-lg-0 ml-md-4">
+						<h4 class="font-weight-light text-danger">2.5%</h4>
+						<p class="text-danger mb-0">Refund</p>
+					</div>
+					<div class="ml-md-4">
+						<h4 class="font-weight-light text-info">+23.6%</h4>
+						<p class="text-info mb-0">Online</p>
+					</div>
+				</div>
+				<p class="mt-3 mb-0 text-muted">Lorem ipsum doller sit amete Lorem ipsum doller sit amete Lorem ipsum doller sit amete Lorem ipsum doller sit amete</p>
+			</div>
+			<div class="card-body px-0 pb-0 d-flex flex-column justify-content-between">
+				<canvas id="statistics-chart" class="mt-auto"></canvas>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-8 grid-margin stretch-card">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Best sellers</h4>
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>
+									Name
+								</th>
+								<th>
+									Sales
+								</th>
+								<th>
+									Stock
+								</th>
+								<th>
+									Category
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									Moon Fever
+								</td>
+								<td>
+									42070
+								</td>
+								<td>
+									801
+								</td>
+								<td>
+									Cynthialand
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Dude You Re Getting A Telescope
+								</td>
+								<td>
+									38667
+								</td>
+								<td>
+									882
+								</td>
+								<td>
+									West Janie
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Telescopes 101
+								</td>
+								<td>
+									12467
+								</td>
+								<td>
+									181
+								</td>
+								<td>
+									Harrisport
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Asteroids
+								</td>
+								<td>
+									8118
+								</td>
+								<td>
+									336
+								</td>
+								<td>
+									West Furmanstad
+								</td>
+							</tr>
+							<tr>
+								<td>
+									The Glossary Of Telescopes
+								</td>
+								<td>
+									21136
+								</td>
+								<td>
+									979
+								</td>
+								<td>
+									Lake Berenice
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-4 grid-margin stretch-card">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Calendar</h4>
+				<div id="inline-datepicker-example" class="datepicker"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-4 grid-margin stretch-card">
+		<div class="card">
+			<div class="card-body d-flex flex-column justify-content-between">
+				<h4 class="card-title">Statistics</h4>
+				<div>
+					<h1 class="font-weight-normal">87659</h1>
+					<h4 class="font-weight-light mb-0">Last 6 months sales</h4>
+				</div>
+				<canvas id="orders-chart"></canvas>
+				<div id="orders-chart-legend" class="chartjs-legend orders-legend"></div> 
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-4 grid-margin stretch-card">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Tickets</h4>
+				<div class="d-flex border-bottom pb-3">
+					<img src="https://via.placeholder.com/37x37" alt="profile" class="img-xs rounded-circle"/>
+					<div class="flex-grow-1 ml-3">
+						<p>Dollie Ellis</p>
+						<div class="d-flex text-muted">
+							<p class="mb-0">Friesenview</p>
+							<p class="ml-auto mb-0">12:45</p>
+						</div>
+					</div>
+				</div>
+				<div class="d-flex border-bottom py-3">
+					<img src="https://via.placeholder.com/37x37" alt="profile" class="img-xs rounded-circle"/>
+					<div class="flex-grow-1 ml-3">
+						<p>Lillie Long</p>
+						<div class="d-flex text-muted">
+							<p class="mb-0">Susiehaven</p>
+							<p class="ml-auto mb-0">10:33</p>
+						</div>
+					</div>
+				</div>
+				<div class="d-flex border-bottom py-3">
+					<img src="https://via.placeholder.com/37x37" alt="profile" class="img-xs rounded-circle"/>
+					<div class="flex-grow-1 ml-3">
+						<p>Lloyd Harper</p>
+						<div class="d-flex text-muted">
+							<p class="mb-0">South Hilbert</p>
+							<p class="ml-auto mb-0">11:10</p>
+						</div>
+					</div>
+				</div>
+				<div class="d-flex pt-3">
+					<img src="https://via.placeholder.com/37x37" alt="profile" class="img-xs rounded-circle"/>
+					<div class="flex-grow-1 ml-3">
+						<p>Bradley Foster</p>
+						<div class="d-flex text-muted">
+							<p class="mb-0">Deshawnhaven</p>
+							<p class="ml-auto mb-0">13:20</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-4 grid-margin stretch-card">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Activity timeline</h4>
+				<ul class="bullet-line-list">
+					<li>
+						<p class="text-muted mb-2">24 May 2018</p>
+						<p>Vacation Home Rental Success</p>
+					</li>
+					<li>
+						<p class="text-muted mb-2">25 May 2018</p>
+						<p>Online Games How To Play To Win</p>
+					</li>
+					<li>
+						<p class="text-muted mb-2">26 May 2018</p>
+						<p>Big Savings On Gas</p>
+					</li>
+					<li>
+						<p class="text-muted mb-2">27 May 2018</p>
+						<p class="mb-0">A Time Travel Postcard</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection

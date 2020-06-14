@@ -1,88 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
-    <title>Login- Digital Bariwala</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="{{asset('assets/css/lib/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="{{asset('assets/css/helper.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
-    <!--[if lt IE 9]>
-    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Login - Digital Bariwala</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/mdi/font/css/materialdesignicons.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.addons.css') }}">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{{ asset('assets/css/horizontal-layout/style.css') }}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
 </head>
 
-<body class="fix-header fix-sidebar">
-    <!-- Preloader - style you can find in spinners.css -->
-    <div class="preloader">
-        <svg class="circular" viewBox="25 25 50 50">
-			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
-    </div>
-    <!-- Main wrapper  -->
-    <div id="main-wrapper">
-
-        <div class="unix-login">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-lg-4">
-                        <div class="login-content card">
-                            <div class="login-form">
-                                <div id="error_msg">
-                                    
-                                </div>
-                                <form id="login">
-                                    <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
-                                    <div class="form-group">
-                                        <label>Userid</label>
-                                        <input type="text" id="user_id" name="user_id" class="form-control" placeholder="Put your user id here...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" id="password" name="password" class="form-control" placeholder="Password">
-                                    </div>
-                                    <div class="checkbox">
-                                        <label class="pull-right">
-        										<a href="#">Forgotten Password?</a>
-        									</label>
-
-                                    </div>
-                                    <input type="submit" value="Login" class="btn btn-primary btn-flat m-b-30 m-t-30">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+<body>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="main-panel">
+        <div class="content-wrapper d-flex align-items-center auth">
+          <div class="row w-100" style="margin: 0px auto;">
+            <div class="col-lg-4 mx-auto">
+              <div class="auth-form-light text-left p-5">
+                <div class="brand-logo" style="text-align: center;">
+                  <img src="{{ asset('assets/images/logo.svg') }}" alt="logo">
                 </div>
+                <div id="error_msg">
+                </div>
+                <form class="pt-3" id="login">
+                  <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-lg" id="user_id" name="user_id" placeholder="Username">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password">
+                  </div>
+                  <div class="mt-3">
+                    <input type="submit" name="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="SIGN IN">
+                  </div>
+                  <div class="text-center mt-4 font-weight-light">
+                    Don't have an account? <a href="register.html" class="text-primary">Create</a>
+                  </div>
+                </form>
+              </div>
             </div>
+          </div>
         </div>
-
+      </div>
+      <!-- content-wrapper ends -->
     </div>
-    <!-- End Wrapper -->
-    <!-- All Jquery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <!-- <script src="{{asset('assets/js/lib/jquery/jquery.min.js')}}"></script> -->
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="{{asset('assets/js/lib/bootstrap/js/popper.min.js')}}"></script>
-    <script src="{{asset('assets/js/lib/bootstrap/js/bootstrap.min.js')}}"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="{{asset('assets/js/jquery.slimscroll.js')}}"></script>
-    <!--Menu sidebar -->
-    <script src="{{asset('assets/js/sidebarmenu.js')}}"></script>
-    <!--stickey kit -->
-    <script src="{{asset('assets/js/lib/sticky-kit-master/dist/sticky-kit.min.js')}}"></script>
-    <!--Custom JavaScript -->
-    <script src="{{asset('assets/js/custom.min.js')}}"></script>
-    <script type="text/javascript">
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
+  <script src="{{ asset('assets/vendors/js/vendor.bundle.addons.js') }}"></script>
+  <!-- endinject -->
+  <!-- inject:js -->
+  <script src="{{ asset('assets/js/off-canvas.js') }}"></script>
+  <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
+  <script src="{{ asset('assets/js/template.js') }}"></script>
+  <script src="{{ asset('assets/js/settings.js') }}"></script>
+  <script src="{{ asset('assets/js/todolist.js') }}"></script>
+  <!-- endinject -->
+
+  <script type="text/javascript">
         $(document).ready(function(){
             $("#login").submit(function(e){
                 e.preventDefault();
@@ -111,7 +98,6 @@
             });
         });
     </script>
-
 </body>
 
 </html>

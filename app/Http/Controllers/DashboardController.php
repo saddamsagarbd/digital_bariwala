@@ -9,7 +9,8 @@ use App\User;
 class DashboardController extends Controller
 {
     public function index(){
-    	return view('sa_dashboard');
+    	// return view('sa_dashboard');
+    	return view('layout.app');
     }
 
     /*
